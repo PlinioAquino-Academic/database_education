@@ -1,0 +1,77 @@
+erDiagram
+    Restaurante ||--o{ Produto : "oferece"
+    Restaurante ||--o{ Pedido : "recebe"
+    Cliente ||--o{ Pedido : "faz"
+    Pedido ||--o{ ItemPedido : "contem"
+    Produto ||--o{ ItemPedido : "esta_no"
+    Pedido ||--|{ Pagamento : "tem"
+
+    Pagamento ||--o| PagamentoCartao : "é_do_tipo"
+    Pagamento ||--o| PagamentoPix : "é_do_tipo"
+    Pagamento ||--o| PagamentoValeRefeicao : "é_do_tipo"
+
+    Restaurante {
+        UUID id_restaurante PK
+        TEXT nome UK
+        TEXT cnpj UK
+        TEXT endereco
+        TEXT telefone
+        TEXT categoria
+        DATE data_cadastro
+        TEXT status
+    }
+    Cliente {
+        UUID id_cliente PK
+        TEXT nome_completo
+        TEXT email UK
+        TEXT telefone
+        TEXT endereco_principal
+        DATE data_cadastro
+    }
+    Produto {
+        UUID id_produto PK
+        TEXT nome_produto
+        TEXT descricao
+        NUMERIC preco
+        BOOLEAN disponivel
+        UUID id_restaurante FK
+    }
+    Pedido {
+        UUID id_pedido PK
+        TIMESTAMPTZ data_hora_pedido
+        TEXT status
+        NUMERIC valor_total
+        TEXT observacoes
+        UUID id_cliente FK
+        UUID id_restaurante FK
+    }
+    ItemPedido {
+        UUID id_item_pedido PK
+        INT quantidade
+        NUMERIC preco_unitario
+        UUID id_pedido FK
+        UUID id_produto FK
+    }
+    Pagamento {
+        UUID id_pagamento PK
+        TIMESTAMPTZ data_hora_pagamento
+        NUMERIC valor_pago
+        TEXT status_pagamento
+        UUID id_pedido FK,UK
+    }
+    PagamentoCartao {
+        UUID id_pagamento PK,FK
+        TEXT numero_cartao_final
+        TEXT bandeira
+        TEXT tipo_cartao
+    }
+    PagamentoPix {
+        UUID id_pagamento PK,FK
+        TEXT chave_pix_origem
+        TEXT id_transacao_pix UK
+    }
+    PagamentoValeRefeicao {
+        UUID id_pagamento PK,FK
+        TEXT empresa_vale
+        TEXT numero_cartao_vale_final
+    }
