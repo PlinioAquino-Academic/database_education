@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>README Complementado - Banco de Dados Relacionais</title>
+  <style>
+:root{
+  --bg:#0b1020;
+  --panel:#121a30;
+  --text:#e8ecf3;
+  --muted:#b8c1d1;
+  --accent:#7cc4ff;
+  --border:#253252;
+  --code:#0f172a;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  padding:0;
+  font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
+  background: linear-gradient(180deg, #0b1020 0%, #0f172a 100%);
+  color:var(--text);
+  line-height:1.65;
+}
+main{
+  max-width:1100px;
+  margin:40px auto;
+  padding:32px;
+  background:rgba(18,26,48,.88);
+  border:1px solid var(--border);
+  border-radius:20px;
+  box-shadow:0 20px 60px rgba(0,0,0,.35);
+}
+h1,h2,h3,h4{line-height:1.25; color:#fff; margin-top:1.4em}
+h1{font-size:2.2rem; margin-top:0}
+h2{font-size:1.6rem; border-bottom:1px solid var(--border); padding-bottom:.35rem}
+h3{font-size:1.25rem}
+p, li{color:var(--text)}
+a{color:var(--accent)}
+code{
+  font-family: "Cascadia Code","Fira Code","Consolas",monospace;
+  background:rgba(124,196,255,.12);
+  border:1px solid rgba(124,196,255,.18);
+  padding:.12rem .35rem;
+  border-radius:6px;
+}
+pre{
+  background:var(--code);
+  border:1px solid var(--border);
+  padding:16px;
+  border-radius:12px;
+  overflow:auto;
+}
+pre code{
+  background:transparent;
+  border:none;
+  padding:0;
+}
+table{
+  width:100%;
+  border-collapse:collapse;
+  margin:18px 0 26px;
+  background:#0f172a;
+}
+th, td{
+  border:1px solid var(--border);
+  padding:10px 12px;
+  vertical-align:top;
+}
+th{
+  background:#15203b;
+  color:#fff;
+  text-align:left;
+}
+blockquote{
+  margin:16px 0;
+  padding:12px 16px;
+  border-left:4px solid var(--accent);
+  background:rgba(124,196,255,.08);
+  color:var(--muted);
+}
+hr{
+  border:none;
+  border-top:1px solid var(--border);
+  margin:32px 0;
+}
+strong{color:#fff}
+</style>
+</head>
+<body>
+  <main>
+    <h1>Projetos de Banco de Dados Relacionais</h1>
+<p>Bem-vindo(a) ao meu repositório de projetos de Banco de Dados! Aqui você encontrará uma coleção de exercícios práticos e soluções detalhadas para desafios de modelagem e implementação de bancos de dados relacionais. O objetivo é demonstrar a aplicação de conceitos fundamentais como Modelagem Entidade-Relacionamento (MER), Modelo Relacional (MR), Normalização (da 1ª à 5ª Forma Normal, incluindo 3FN e BCNF), integridade de dados (PK, UNIQUE, FK, CHECK, DEFAULT) e a utilização de disjunção (especialização/generalização).</p>
+<p>Cada projeto inclui:</p>
+<ul>
+<li>Um <strong>enunciado</strong> detalhado do problema.</li>
+<li>O <strong>Modelo Entidade-Relacionamento (MER)</strong> e seu diagrama visual.</li>
+<li>O <strong>Modelo Relacional (MR)</strong> correspondente.</li>
+<li><strong>Scripts SQL DDL</strong> (Data Definition Language) para criação das tabelas, com todas as restrições.</li>
+<li><strong>Scripts SQL DML</strong> (Data Manipulation Language) para popular o banco de dados com dados fictícios.</li>
+<li><strong>Scripts SQL DQL</strong> (Data Query Language) com consultas complexas para testar o modelo.</li>
+</ul>
+<p>Os scripts DDL e DML são fornecidos tanto no <strong>padrão ANSI SQL</strong> quanto adaptados para <strong>Supabase (PostgreSQL)</strong>, destacando as diferenças e vantagens de cada abordagem.</p>
+
+<h2>Vídeo de demonstração - Projeto de Banco de Dados - Conceitos inicias e básicos</h2>
+
+<p align="center">
+  <a href="https://www.youtube.com/watch?v=8Z44fiQOOnE">
+    <img src="https://img.youtube.com/vi/8Z44fiQOOnE/maxresdefault.jpg"
+         alt="Assista ao vídeo no YouTube"
+         width="720">
+  </a>
+</p>
+
+<h2>Projetos Desenvolvidos</h2>
+<h3>1. Sistema de Streaming de Música</h3>
+<p>Este projeto aborda a modelagem de um sistema básico de streaming de música, gerenciando usuários, artistas, músicas, reproduções e avaliações. É um excelente ponto de partida para entender os conceitos básicos de modelagem relacional e integridade de dados.</p>
+<p><strong>Conceitos Abordados:</strong></p>
+<ul>
+<li>Entidades e atributos básicos.</li>
+<li>Relacionamentos 1:N e N:M (resolvido com tabela associativa).</li>
+<li>Chaves Primárias (PK) e Estrangeiras (FK).</li>
+<li>Restrições <code>NOT NULL</code> e <code>UNIQUE</code>.</li>
+</ul>
+<p><strong>Arquivos Relevantes:</strong></p>
+<ul>
+<li><code>Solucao_Final_Prova_BD.md</code>: Documento completo com MER, MR, DDL e DML (ANSI e Supabase).</li>
+<li><code>mer_streaming_musica.png</code>: Diagrama ER visual.</li>
+</ul>
+<h3>2. Sistema de Gestão Hospitalar</h3>
+<p>Um projeto mais complexo que simula um sistema de gestão para um hospital. Inclui a gestão de pacientes, médicos, consultas, internações, prontuários eletrônicos, medicamentos e alas hospitalares. Este cenário introduz uma complexidade maior nos relacionamentos e nas restrições de integridade.</p>
+<p><strong>Conceitos Abordados:</strong></p>
+<ul>
+<li>Relacionamentos 1:1, 1:N e N:M (com tabelas associativas).</li>
+<li>Entidades Fracas (ex: <code>RegistroProntuario</code> dependente de <code>Prontuario</code>).</li>
+<li>Restrições <code>CHECK</code> para validação de dados (ex: <code>capacidade_maxima &gt; 0</code>, <code>data_saida &gt;= data_entrada</code>).</li>
+<li>Uso de <code>DEFAULT</code> para campos como <code>data_cadastro</code>.</li>
+<li>Scripts DDL e DML detalhados para ANSI e Supabase.</li>
+</ul>
+<p><strong>Arquivos Relevantes:</strong></p>
+<ul>
+<li><code>Solucao_Final_Prova_BD_Hospitalar.md</code>: Documento completo com enunciado, MER, MR, DDL e DML (ANSI e Supabase), e exemplos de DML/DQL.</li>
+<li><code>mer_hospitalar.png</code>: Diagrama ER visual.</li>
+<li><code>script_populacao_hospitalar.sql</code>: Script DML para popular o banco de dados hospitalar.</li>
+<li><code>consultas_complexas_hospitalar.sql</code>: Script DQL com consultas avançadas.</li>
+</ul>
+<h3>3. Sistema de Delivery de Comida (iFood-like)</h3>
+<p>Este é o projeto mais avançado, modelando um sistema de delivery de comida com foco na gestão de pedidos e, principalmente, na implementação de <strong>disjunção (especialização/generalização)</strong> para os métodos de pagamento (Cartão, PIX, Vale-Refeição). O design segue rigorosamente a <strong>Terceira Forma Normal (3FN)</strong> e é otimizado para <strong>Supabase (PostgreSQL)</strong>.</p>
+<p><strong>Conceitos Abordados:</strong></p>
+<ul>
+<li><strong>Disjunção (Especialização/Generalização)</strong>: Modelagem de hierarquias de entidades (Pagamento genérico e suas especializações).</li>
+<li><strong>Terceira Forma Normal (3FN)</strong>: Garantia de que o modelo está bem normalizado, eliminando dependências transitivas.</li>
+<li><strong>Restrições Avançadas</strong>: <code>CHECK</code> para formato de email, <code>LENGTH</code> para dígitos finais de cartão, <code>ON DELETE CASCADE/RESTRICT</code> para FKs.</li>
+<li><strong>UUIDs como PKs</strong>: Utilização de <code>gen_random_uuid()</code> para identificadores únicos e distribuídos.</li>
+<li><strong>Row Level Security (RLS)</strong>: Exemplos de políticas de segurança no Supabase.</li>
+</ul>
+<p><strong>Arquivos Relevantes:</strong></p>
+<ul>
+<li><code>Solucao_Final_iFood_Like.md</code>: Documento completo com enunciado, MER, MR, DDL e DML (Supabase), e exemplos de DML/DQL.</li>
+<li><code>mer_ifood_like.png</code>: Diagrama ER visual.</li>
+<li><code>ddl_ifood_like_supabase.sql</code>: Script DDL para criação do banco de dados no Supabase.</li>
+<li><code>dml_ifood_like_supabase.sql</code>: Script DML para popular o banco de dados no Supabase.</li>
+</ul>
+<h2>Guia de Estudos de Banco de Dados</h2>
+<p>Estudar bancos de dados é fundamental para qualquer profissional de tecnologia. Aqui estão algumas dicas para aprofundar seus conhecimentos:</p>
+<ol>
+<li><p><strong>Entenda os Fundamentos da Modelagem</strong>: Comece com o Modelo Entidade-Relacionamento (MER). Compreenda entidades, atributos, tipos de atributos (simples, composto, multivalorado, derivado) e, crucialmente, os tipos de relacionamentos (1:1, 1:N, N:M) e suas cardinalidades. Ferramentas como o Mermaid (utilizado neste repositório) são ótimas para visualizar seus diagramas.</p>
+</li>
+<li><p><strong>Domine a Normalização</strong>: A normalização é a chave para projetar bancos de dados eficientes e sem redundâncias. Comece pela 1FN, 2FN e 3FN, depois aprofunde em BCNF, 4FN e 5FN para compreender casos mais sofisticados de dependências funcionais, multivaloradas e de junção. Entenda o que são dependências funcionais e como eliminá-las para evitar anomalias de inserção, atualização e exclusão. A 3FN é um bom objetivo para a maioria dos projetos, enquanto BCNF, 4FN e 5FN ajudam a refinar cenários mais complexos.</p>
+</li>
+<li><p><strong>Pratique SQL Constantemente</strong>: A melhor forma de aprender SQL é praticando. Escreva comandos DDL para criar tabelas com todas as restrições (PK, UNIQUE, FK, CHECK, DEFAULT). Crie scripts DML para inserir, atualizar e deletar dados. E, principalmente, desenvolva consultas DQL complexas com <code>JOIN</code>s, <code>WHERE</code>, <code>GROUP BY</code>, <code>HAVING</code>, subconsultas e funções de agregação. Plataformas como o Supabase oferecem um ambiente PostgreSQL gratuito e fácil de usar para isso.</p>
+</li>
+<li><p><strong>Compreenda a Integridade de Dados</strong>: As restrições (PK, UNIQUE, FK, CHECK, NOT NULL) não são apenas sintaxe; elas são a base para garantir que seus dados sejam consistentes e válidos. Entenda o propósito de cada uma e como elas protegem seu banco de dados de informações incorretas.</p>
+</li>
+<li><p><strong>Explore Conceitos Avançados</strong>: Após os fundamentos, mergulhe em tópicos como índices (para performance), transações (ACID), visões, stored procedures, triggers e segurança (como Row Level Security no PostgreSQL/Supabase). Estes conceitos elevam a qualidade e a robustez de suas aplicações.</p>
+</li>
+<li><p><strong>Utilize Ferramentas Visuais</strong>: Ferramentas de modelagem (como o draw.io, Lucidchart ou mesmo o Mermaid no VS Code) ajudam a visualizar o MER e o MR, tornando o processo de design mais intuitivo.</p>
+</li>
+<li><p><strong>Mantenha-se Atualizado</strong>: O mundo dos bancos de dados está em constante evolução. Acompanhe as novidades de SGBDs que você utiliza e explore novas tecnologias (NoSQL, bancos de dados em nuvem, etc.).</p>
+</li>
+</ol>
+<h2>Por que Supabase (PostgreSQL)?</h2>
+<p>O Supabase é uma plataforma de código aberto que oferece um banco de dados PostgreSQL com funcionalidades de Backend-as-a-Service (BaaS). Ele é uma excelente escolha para projetos modernos por várias razões:</p>
+<ul>
+<li><strong>PostgreSQL Robusto</strong>: Um dos SGBDs relacionais mais avançados e confiáveis do mercado, com forte conformidade ANSI SQL.</li>
+<li><strong>Facilidade de Uso</strong>: Simplifica a configuração e o gerenciamento de bancos de dados.</li>
+<li><strong>Recursos Integrados</strong>: Oferece autenticação, APIs instantâneas (REST e GraphQL), armazenamento de arquivos e funções Edge, tudo integrado ao seu banco de dados.</li>
+<li><strong>Row Level Security (RLS)</strong>: Permite implementar políticas de segurança granulares diretamente no banco de dados, controlando o acesso a dados em nível de linha, o que é crucial para aplicações multiusuário.</li>
+<li><strong>Escalabilidade</strong>: Projetado para escalar com suas necessidades, desde pequenos projetos até aplicações de grande porte.</li>
+<li><strong>Comunidade Ativa</strong>: Beneficia-se de uma grande comunidade de desenvolvedores e vasta documentação.</li>
+</ul>
+<p>Ao utilizar o Supabase, você não apenas aplica seus conhecimentos em SQL, mas também se familiariza com uma plataforma moderna que acelera o desenvolvimento de aplicações web e mobile.</p>
+<h2>Guia Complementar de Normalização: da 1FN à 5FN</h2>
+<p>Esta seção complementa o repositório com uma visão mais profunda das formas normais clássicas, incluindo a <strong>Forma Normal de Boyce-Codd (BCNF)</strong>, a <strong>Quarta Forma Normal (4FN)</strong> e a <strong>Quinta Forma Normal (5FN)</strong>. A ideia central da normalização é reduzir redundâncias, evitar anomalias de inserção, atualização e exclusão, e produzir um modelo relacional mais consistente, estável e fácil de manter.</p>
+
+
+<h2>Vídeo de demonstração - Normalização em Banco de Dados</h2>
+
+<p align="center">
+  <a href="https://www.youtube.com/watch?v=O5VsMpvySnU">
+    <img src="https://img.youtube.com/vi/O5VsMpvySnU/maxresdefault.jpg"
+         alt="Assista ao vídeo no YouTube"
+         width="720">
+  </a>
+</p>
+
+<h3>Visão Geral</h3>
+<table>
+<thead>
+<tr>
+  <th style="text-align:left">Forma Normal</th>
+  <th style="text-align:left">Objetivo principal</th>
+  <th style="text-align:left">Problema que combate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td style="text-align:left"><strong>1FN</strong></td>
+  <td style="text-align:left">Garantir atomicidade dos atributos</td>
+  <td style="text-align:left">Campos multivalorados, listas e grupos repetitivos</td>
+</tr>
+<tr>
+  <td style="text-align:left"><strong>2FN</strong></td>
+  <td style="text-align:left">Eliminar dependências parciais da chave</td>
+  <td style="text-align:left">Redundância em tabelas com chave composta</td>
+</tr>
+<tr>
+  <td style="text-align:left"><strong>3FN</strong></td>
+  <td style="text-align:left">Eliminar dependências transitivas</td>
+  <td style="text-align:left">Atributos não-chave dependentes de outros não-chave</td>
+</tr>
+<tr>
+  <td style="text-align:left"><strong>BCNF</strong></td>
+  <td style="text-align:left">Reforçar a 3FN exigindo determinantes mais fortes</td>
+  <td style="text-align:left">Dependências funcionais onde o determinante não é superchave</td>
+</tr>
+<tr>
+  <td style="text-align:left"><strong>4FN</strong></td>
+  <td style="text-align:left">Eliminar dependências multivaloradas independentes</td>
+  <td style="text-align:left">Combinações artificiais entre conjuntos independentes</td>
+</tr>
+<tr>
+  <td style="text-align:left"><strong>5FN</strong></td>
+  <td style="text-align:left">Eliminar dependências de junção complexas</td>
+  <td style="text-align:left">Relações que só ficam corretas quando decompostas em mais de duas projeções</td>
+</tr>
+</tbody>
+</table>
+<h3>1. Primeira Forma Normal (1FN)</h3>
+<p>A <strong>Primeira Forma Normal (1FN)</strong> exige que cada atributo da tabela contenha <strong>valores atômicos</strong>, ou seja, um único valor por célula, sem listas, grupos repetitivos ou colunas que armazenem múltiplos itens em um mesmo campo.</p>
+<h4>Quando uma tabela viola a 1FN?</h4>
+<ul>
+<li>quando um atributo guarda vários telefones em uma única coluna;</li>
+<li>quando um campo armazena uma lista de produtos, e-mails ou códigos separados por vírgula;</li>
+<li>quando existem colunas repetidas do tipo <code>telefone1</code>, <code>telefone2</code>, <code>telefone3</code>.</li>
+</ul>
+<h4>Exemplo 1 — Telefones de aluno</h4>
+<p><strong>Tabela não normalizada</strong></p>
+<pre><code class="language-text">ALUNO(id_aluno, nome, telefones)
+(1, 'Ana', '1199999-1111, 1198888-2222')
+</code></pre>
+<p>Problema: a coluna <code>telefones</code> armazena múltiplos valores em uma única célula.</p>
+<p><strong>Solução em 1FN</strong></p>
+<pre><code class="language-text">ALUNO(id_aluno, nome)
+(1, 'Ana')
+
+ALUNO_TELEFONE(id_aluno, telefone)
+(1, '1199999-1111')
+(1, '1198888-2222')
+</code></pre>
+<h4>Exemplo 2 — Itens de pedido em lista</h4>
+<p><strong>Tabela não normalizada</strong></p>
+<pre><code class="language-text">PEDIDO(id_pedido, cliente, itens)
+(10, 'Carlos', 'Arroz; Feijão; Macarrão')
+</code></pre>
+<p>Problema: a coluna <code>itens</code> mistura vários produtos em um único campo.</p>
+<p><strong>Solução em 1FN</strong></p>
+<pre><code class="language-text">PEDIDO(id_pedido, cliente)
+(10, 'Carlos')
+
+ITEM_PEDIDO(id_pedido, item)
+(10, 'Arroz')
+(10, 'Feijão')
+(10, 'Macarrão')
+</code></pre>
+<p><strong>Resumo da 1FN:</strong> todo atributo deve representar um único fato indivisível dentro do contexto da aplicação.</p>
+<h3>2. Segunda Forma Normal (2FN)</h3>
+<p>A <strong>Segunda Forma Normal (2FN)</strong> exige que a relação já esteja em 1FN e que <strong>todo atributo não-chave dependa da chave primária inteira</strong>, e não apenas de parte dela. Esse problema aparece principalmente em tabelas com <strong>chave composta</strong>.</p>
+<h4>Quando uma tabela viola a 2FN?</h4>
+<ul>
+<li>quando a chave primária possui mais de um atributo;</li>
+<li>quando algum atributo não-chave depende apenas de um pedaço da chave composta;</li>
+<li>quando há repetição desnecessária de dados descritivos.</li>
+</ul>
+<h4>Exemplo 1 — Matrícula em disciplina</h4>
+<p>Considere a relação:</p>
+<pre><code class="language-text">MATRICULA(id_aluno, id_disciplina, nome_aluno, nome_disciplina, nota)
+PK = (id_aluno, id_disciplina)
+</code></pre>
+<p>Dependências:</p>
+<ul>
+<li><code>id_aluno -&gt; nome_aluno</code></li>
+<li><code>id_disciplina -&gt; nome_disciplina</code></li>
+<li><code>(id_aluno, id_disciplina) -&gt; nota</code></li>
+</ul>
+<p>Problema: <code>nome_aluno</code> depende só de <code>id_aluno</code>, e <code>nome_disciplina</code> depende só de <code>id_disciplina</code>.</p>
+<p><strong>Decomposição para 2FN</strong></p>
+<pre><code class="language-text">ALUNO(id_aluno, nome_aluno)
+DISCIPLINA(id_disciplina, nome_disciplina)
+MATRICULA(id_aluno, id_disciplina, nota)
+</code></pre>
+<h4>Exemplo 2 — Itens de pedido com chave composta</h4>
+<p>Considere:</p>
+<pre><code class="language-text">ITEM_PEDIDO(id_pedido, id_produto, data_pedido, nome_produto, quantidade)
+PK = (id_pedido, id_produto)
+</code></pre>
+<p>Dependências:</p>
+<ul>
+<li><code>id_pedido -&gt; data_pedido</code></li>
+<li><code>id_produto -&gt; nome_produto</code></li>
+<li><code>(id_pedido, id_produto) -&gt; quantidade</code></li>
+</ul>
+<p>Problema: <code>data_pedido</code> depende só de <code>id_pedido</code>, e <code>nome_produto</code> depende só de <code>id_produto</code>.</p>
+<p><strong>Decomposição para 2FN</strong></p>
+<pre><code class="language-text">PEDIDO(id_pedido, data_pedido)
+PRODUTO(id_produto, nome_produto)
+ITEM_PEDIDO(id_pedido, id_produto, quantidade)
+</code></pre>
+<p><strong>Resumo da 2FN:</strong> atributos descritivos devem ser colocados nas entidades às quais realmente pertencem.</p>
+<h3>3. Terceira Forma Normal (3FN)</h3>
+<p>A <strong>Terceira Forma Normal (3FN)</strong> exige que a relação já esteja em 2FN e que <strong>não existam dependências transitivas</strong> entre atributos não-chave. Em outras palavras, um atributo não-chave não deve depender de outro atributo não-chave.</p>
+<h4>Quando uma tabela viola a 3FN?</h4>
+<ul>
+<li>quando um atributo não-chave determina outro atributo não-chave;</li>
+<li>quando informações de uma entidade secundária são repetidas em outra tabela;</li>
+<li>quando alterações em um único fato exigem atualização de várias linhas.</li>
+</ul>
+<h4>Exemplo 1 — Funcionário e departamento</h4>
+<p>Considere:</p>
+<pre><code class="language-text">FUNCIONARIO(id_funcionario, nome_funcionario, id_departamento, nome_departamento)
+PK = id_funcionario
+</code></pre>
+<p>Dependências:</p>
+<ul>
+<li><code>id_funcionario -&gt; nome_funcionario, id_departamento</code></li>
+<li><code>id_departamento -&gt; nome_departamento</code></li>
+</ul>
+<p>Problema: <code>nome_departamento</code> depende transitivamente de <code>id_funcionario</code> por meio de <code>id_departamento</code>.</p>
+<p><strong>Decomposição para 3FN</strong></p>
+<pre><code class="language-text">DEPARTAMENTO(id_departamento, nome_departamento)
+FUNCIONARIO(id_funcionario, nome_funcionario, id_departamento)
+</code></pre>
+<h4>Exemplo 2 — Livro e editora</h4>
+<p>Considere:</p>
+<pre><code class="language-text">LIVRO(id_livro, titulo, id_editora, nome_editora)
+PK = id_livro
+</code></pre>
+<p>Dependências:</p>
+<ul>
+<li><code>id_livro -&gt; titulo, id_editora</code></li>
+<li><code>id_editora -&gt; nome_editora</code></li>
+</ul>
+<p>Problema: <code>nome_editora</code> não depende diretamente da chave da tabela <code>LIVRO</code>, mas de <code>id_editora</code>.</p>
+<p><strong>Decomposição para 3FN</strong></p>
+<pre><code class="language-text">EDITORA(id_editora, nome_editora)
+LIVRO(id_livro, titulo, id_editora)
+</code></pre>
+<p><strong>Resumo da 3FN:</strong> cada fato deve ser armazenado uma única vez, na tabela cuja chave o determina diretamente.</p>
+<h3>4. Forma Normal de Boyce-Codd (BCNF)</h3>
+<p>A <strong>BCNF (Boyce-Codd Normal Form)</strong> é uma versão mais forte da 3FN. Ela exige que, para toda dependência funcional não trivial <code>X -&gt; Y</code>, o determinante <code>X</code> seja uma <strong>superchave</strong>.</p>
+<p>Em termos práticos: a BCNF resolve alguns casos em que a tabela está em 3FN, mas ainda mantém redundâncias porque existe um determinante que não é superchave.</p>
+<h4>Quando uma tabela pode estar em 3FN e ainda violar BCNF?</h4>
+<ul>
+<li>quando um atributo primo aparece do lado direito de uma dependência funcional;</li>
+<li>quando a 3FN aceita a relação, mas ainda existem redundâncias estruturais;</li>
+<li>quando diferentes chaves candidatas compartilham atributos e surgem determinantes não plenos.</li>
+</ul>
+<h4>Exemplo 1 — Projeto, consultor e função</h4>
+<p>Considere:</p>
+<pre><code class="language-text">ALOCACAO(projeto, consultor, funcao)
+</code></pre>
+<p>Premissas:</p>
+<ul>
+<li>cada <code>consultor</code> exerce uma única <code>funcao</code>;</li>
+<li>um projeto pode ter vários consultores;</li>
+<li>uma função pode aparecer em vários projetos.</li>
+</ul>
+<p>Dependências:</p>
+<ul>
+<li><code>(projeto, consultor) -&gt; funcao</code></li>
+<li><code>consultor -&gt; funcao</code></li>
+</ul>
+<p>Supondo que <code>(projeto, consultor)</code> seja chave candidata, a dependência <code>consultor -&gt; funcao</code> viola a BCNF porque <code>consultor</code> não é superchave.</p>
+<p><strong>Decomposição para BCNF</strong></p>
+<pre><code class="language-text">CONSULTOR(consultor, funcao)
+ALOCACAO_PROJETO(projeto, consultor)
+</code></pre>
+<h4>Exemplo 2 — Turma, professor e disciplina</h4>
+<p>Considere:</p>
+<pre><code class="language-text">OFERTA(turma, professor, disciplina)
+</code></pre>
+<p>Premissas:</p>
+<ul>
+<li>cada <code>professor</code> ministra uma única <code>disciplina</code> naquela base;</li>
+<li>uma <code>turma</code> pode ter aulas com diferentes professores;</li>
+<li>a combinação <code>(turma, professor)</code> identifica a disciplina ofertada.</li>
+</ul>
+<p>Dependências:</p>
+<ul>
+<li><code>(turma, professor) -&gt; disciplina</code></li>
+<li><code>professor -&gt; disciplina</code></li>
+</ul>
+<p>Problema: <code>professor</code> determina <code>disciplina</code>, mas <code>professor</code> não é superchave na relação.</p>
+<p><strong>Decomposição para BCNF</strong></p>
+<pre><code class="language-text">PROFESSOR(professor, disciplina)
+TURMA_PROFESSOR(turma, professor)
+</code></pre>
+<p><strong>Resumo da BCNF:</strong> toda fonte de determinação funcional relevante deve ser uma superchave.</p>
+<h3>5. Quarta Forma Normal (4FN)</h3>
+<p>A <strong>Quarta Forma Normal (4FN)</strong> exige que a relação esteja em BCNF e que <strong>não existam dependências multivaloradas não triviais</strong>. Isso acontece quando uma entidade possui dois ou mais conjuntos de valores independentes entre si, mas todos foram colocados na mesma tabela.</p>
+<h4>Sinal típico de violação da 4FN</h4>
+<ul>
+<li>um aluno possui vários hobbies e vários idiomas, mas hobby e idioma são independentes;</li>
+<li>um produto possui vários fornecedores e várias cores, mas fornecedor e cor não dependem um do outro;</li>
+<li>a tabela gera combinações artificiais que não representam fatos reais.</li>
+</ul>
+<h4>Exemplo 1 — Aluno, hobby e idioma</h4>
+<p>Considere:</p>
+<pre><code class="language-text">ALUNO_INTERESSE(id_aluno, hobby, idioma)
+</code></pre>
+<p>Suponha que:</p>
+<ul>
+<li>um aluno tenha vários hobbies;</li>
+<li>um aluno tenha vários idiomas;</li>
+<li>hobbies e idiomas são independentes.</li>
+</ul>
+<p>Se Ana gosta de <code>Xadrez</code> e <code>Pintura</code>, e fala <code>Português</code> e <code>Inglês</code>, a tabela gera:</p>
+<pre><code class="language-text">(1, 'Xadrez', 'Português')
+(1, 'Xadrez', 'Inglês')
+(1, 'Pintura', 'Português')
+(1, 'Pintura', 'Inglês')
+</code></pre>
+<p>Problema: a relação mistura dois conjuntos independentes, criando um produto cartesiano.</p>
+<p><strong>Decomposição para 4FN</strong></p>
+<pre><code class="language-text">ALUNO_HOBBY(id_aluno, hobby)
+ALUNO_IDIOMA(id_aluno, idioma)
+</code></pre>
+<h4>Exemplo 2 — Produto, fornecedor e cor</h4>
+<p>Considere:</p>
+<pre><code class="language-text">PRODUTO_FORNECEDOR_COR(id_produto, fornecedor, cor)
+</code></pre>
+<p>Suponha que:</p>
+<ul>
+<li>um produto tenha vários fornecedores homologados;</li>
+<li>um produto exista em várias cores;</li>
+<li>fornecedores e cores são independentes.</li>
+</ul>
+<p>Problema: cada fornecedor será combinado com cada cor, mesmo sem existir um fato específico ligando ambos.</p>
+<p><strong>Decomposição para 4FN</strong></p>
+<pre><code class="language-text">PRODUTO_FORNECEDOR(id_produto, fornecedor)
+PRODUTO_COR(id_produto, cor)
+</code></pre>
+<p><strong>Resumo da 4FN:</strong> fatos multivalorados independentes devem ser modelados em relações separadas.</p>
+<h3>6. Quinta Forma Normal (5FN)</h3>
+<p>A <strong>Quinta Forma Normal (5FN)</strong>, também chamada de <strong>Forma Normal de Projeção-Junção (PJ/NF)</strong>, trata casos em que uma relação só pode ser corretamente reconstruída a partir da decomposição em <strong>três ou mais relações</strong>, sem perda de informação e sem gerar tuplas espúrias.</p>
+<p>A 5FN é menos comum em projetos introdutórios, mas é importante em cenários com regras de negócio muito refinadas, especialmente em contratos, logística, manufatura e autorizações complexas.</p>
+<h4>Quando pensar em 5FN?</h4>
+<ul>
+<li>quando a relação representa uma associação ternária ou n-ária complexa;</li>
+<li>quando decompor em apenas duas tabelas não é suficiente;</li>
+<li>quando a combinação correta depende de múltiplas projeções simultâneas.</li>
+</ul>
+<h4>Exemplo 1 — Fornecedor, peça e projeto</h4>
+<p>Considere a relação:</p>
+<pre><code class="language-text">FORNECIMENTO(fornecedor, peca, projeto)
+</code></pre>
+<p>Suponha que uma linha só deva existir quando:</p>
+<ul>
+<li>o fornecedor está habilitado para fornecer a peça;</li>
+<li>o fornecedor está autorizado a atuar no projeto;</li>
+<li>a peça é utilizada no projeto.</li>
+</ul>
+<p>Nessa situação, a relação pode ser decomposta em:</p>
+<pre><code class="language-text">FORNECEDOR_PECA(fornecedor, peca)
+FORNECEDOR_PROJETO(fornecedor, projeto)
+PECA_PROJETO(peca, projeto)
+</code></pre>
+<p>Se a regra de negócio garantir que a junção dessas três projeções reconstrói exatamente <code>FORNECIMENTO</code>, então a decomposição está em 5FN.</p>
+<h4>Exemplo 2 — Médico, procedimento e hospital</h4>
+<p>Considere:</p>
+<pre><code class="language-text">ATENDIMENTO(medico, procedimento, hospital)
+</code></pre>
+<p>Suponha que um atendimento seja válido apenas quando:</p>
+<ul>
+<li>o médico está credenciado no hospital;</li>
+<li>o médico está habilitado para o procedimento;</li>
+<li>o hospital realiza aquele procedimento.</li>
+</ul>
+<p>Podemos decompor em:</p>
+<pre><code class="language-text">MEDICO_HOSPITAL(medico, hospital)
+MEDICO_PROCEDIMENTO(medico, procedimento)
+HOSPITAL_PROCEDIMENTO(hospital, procedimento)
+</code></pre>
+<p>Se toda tupla válida em <code>ATENDIMENTO</code> puder ser obtida exatamente pela junção dessas três relações, sem gerar combinações indevidas, então temos um caso típico de 5FN.</p>
+<p><strong>Resumo da 5FN:</strong> a decomposição deve preservar a semântica completa de relações complexas de muitos para muitos para muitos, evitando tuplas espúrias após junções.</p>
+<h3>Comparação rápida entre 3FN, BCNF, 4FN e 5FN</h3>
+<table>
+<thead>
+<tr>
+  <th style="text-align:left">Forma</th>
+  <th style="text-align:left">Foco principal</th>
+  <th style="text-align:left">Exemplo típico de problema</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td style="text-align:left"><strong>3FN</strong></td>
+  <td style="text-align:left">Dependência transitiva</td>
+  <td style="text-align:left"><code>id_departamento -&gt; nome_departamento</code> dentro de <code>FUNCIONARIO</code></td>
+</tr>
+<tr>
+  <td style="text-align:left"><strong>BCNF</strong></td>
+  <td style="text-align:left">Determinante que não é superchave</td>
+  <td style="text-align:left"><code>professor -&gt; disciplina</code> dentro de <code>OFERTA</code></td>
+</tr>
+<tr>
+  <td style="text-align:left"><strong>4FN</strong></td>
+  <td style="text-align:left">Dependência multivalorada</td>
+  <td style="text-align:left">hobbies e idiomas independentes na mesma tabela</td>
+</tr>
+<tr>
+  <td style="text-align:left"><strong>5FN</strong></td>
+  <td style="text-align:left">Dependência de junção</td>
+  <td style="text-align:left">relação ternária que precisa de três projeções para ficar correta</td>
+</tr>
+</tbody>
+</table>
+<h3>Dicas práticas para estudo e projeto</h3>
+<ol>
+<li><strong>Sempre comece pelo entendimento do domínio.</strong> A normalização não é uma receita mecânica; ela depende da semântica dos dados e das regras de negócio.</li>
+<li><strong>Liste as dependências funcionais.</strong> Muitas falhas de modelagem surgem porque a equipe cria tabelas antes de entender quem determina quem.</li>
+<li><strong>Use 3FN como meta base.</strong> Em grande parte dos sistemas transacionais, chegar com qualidade à 3FN já resolve a maior parte dos problemas.</li>
+<li><strong>Aplique BCNF, 4FN e 5FN quando o domínio justificar.</strong> Esses níveis são especialmente úteis em modelos acadêmicos, ambientes complexos e cenários com muitas combinações.</li>
+<li><strong>Avalie performance separadamente.</strong> Em alguns casos reais, pode existir desnormalização controlada por razões de desempenho, mas isso deve ser consciente e documentado.</li>
+</ol>
+<h3>Conclusão</h3>
+<p>Dominar da <strong>1FN à 5FN</strong> significa compreender diferentes tipos de redundância e saber tratá-los de forma estruturada. Em disciplinas de Banco de Dados Relacional, isso ajuda não apenas a resolver exercícios, mas também a justificar decisões de projeto, elaborar modelos mais elegantes e escrever SQL com maior coerência conceitual.</p>
+<h2>Resumo de Comandos SQL ANSI (Cheat Sheet para Estudos)</h2>
+<p>Esta seção oferece um resumo dos comandos SQL mais comuns, categorizados por sua função, seguindo o padrão ANSI SQL. É um guia rápido para consulta e estudo.</p>
+<h3>1. DDL (Data Definition Language) - Definição de Dados</h3>
+<p>Comandos para definir, modificar ou excluir a estrutura do banco de dados.</p>
+<table>
+<thead>
+<tr>
+  <th style="text-align:left">Comando</th>
+  <th style="text-align:left">Descrição</th>
+  <th style="text-align:left">Exemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td style="text-align:left"><code>CREATE DATABASE</code></td>
+  <td style="text-align:left">Cria um novo banco de dados.</td>
+  <td style="text-align:left"><code>CREATE DATABASE minha_empresa;</code></td>
+</tr>
+<tr>
+  <td style="text-align:left"><code>CREATE TABLE</code></td>
+  <td style="text-align:left">Cria uma nova tabela.</td>
+  <td style="text-align:left"><code>CREATE TABLE Produtos (id INT PRIMARY KEY, nome VARCHAR(100) NOT NULL);</code></td>
+</tr>
+<tr>
+  <td style="text-align:left"><code>ALTER TABLE</code></td>
+  <td style="text-align:left">Modifica a estrutura de uma tabela existente.</td>
+  <td style="text-align:left"><code>ALTER TABLE Produtos ADD COLUMN preco DECIMAL(10, 2);</code> <br> <code>ALTER TABLE Produtos DROP COLUMN preco;</code> <br> <code>ALTER TABLE Produtos ALTER COLUMN nome VARCHAR(200);</code></td>
+</tr>
+<tr>
+  <td style="text-align:left"><code>DROP TABLE</code></td>
+  <td style="text-align:left">Exclui uma tabela existente.</td>
+  <td style="text-align:left"><code>DROP TABLE Produtos;</code></td>
+</tr>
+<tr>
+  <td style="text-align:left"><code>CREATE INDEX</code></td>
+  <td style="text-align:left">Cria um índice em uma tabela para otimizar consultas.</td>
+  <td style="text-align:left"><code>CREATE INDEX idx_nome_produto ON Produtos (nome);</code></td>
+</tr>
+<tr>
+  <td style="text-align:left"><code>DROP INDEX</code></td>
+  <td style="text-align:left">Exclui um índice.</td>
+  <td style="text-align:left"><code>DROP INDEX idx_nome_produto;</code></td>
+</tr>
+<tr>
+  <td style="text-align:left"><code>CREATE VIEW</code></td>
+  <td style="text-align:left">Cria uma visão (tabela virtual) baseada no resultado de uma consulta.</td>
+  <td style="text-align:left"><code>CREATE VIEW ProdutosAtivos AS SELECT nome, preco FROM Produtos WHERE disponivel = TRUE;</code></td>
+</tr>
+<tr>
+  <td style="text-align:left"><code>DROP VIEW</code></td>
+  <td style="text-align:left">Exclui uma visão.</td>
+  <td style="text-align:left"><code>DROP VIEW ProdutosAtivos;</code></td>
+</tr>
+<tr>
+  <td style="text-align:left"><code>CREATE SCHEMA</code></td>
+  <td style="text-align:left">Cria um novo esquema para organizar objetos do banco de dados.</td>
+  <td style="text-align:left"><code>CREATE SCHEMA vendas;</code></td>
+</tr>
+<tr>
+  <td style="text-align:left"><code>DROP SCHEMA</code></td>
+  <td style="text-align:left">Exclui um esquema.</td>
+  <td style="text-align:left"><code>DROP SCHEMA vendas;</code></td>
+</tr>
+</tbody>
+</table>
+<h3>2. DML (Data Manipulation Language) - Manipulação de Dados</h3>
+<p>Comandos para manipular os dados dentro das tabelas.</p>
+<table>
+<thead>
+<tr>
+  <th style="text-align:left">Comando</th>
+  <th style="text-align:left">Descrição</th>
+  <th style="text-align:left">Exemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td style="text-align:left"><code>INSERT INTO</code></td>
+  <td style="text-align:left">Insere novos registros em uma tabela.</td>
+  <td style="text-align:left"><code>INSERT INTO Produtos (id, nome, preco) VALUES (1, 'Teclado', 150.00);</code></td>
+</tr>
+<tr>
+  <td style="text-align:left"><code>UPDATE</code></td>
+  <td style="text-align:left">Modifica registros existentes em uma tabela.</td>
+  <td style="text-align:left"><code>UPDATE Produtos SET preco = 160.00 WHERE id = 1;</code></td>
+</tr>
+<tr>
+  <td style="text-align:left"><code>DELETE FROM</code></td>
+  <td style="text-align:left">Exclui registros de uma tabela.</td>
+  <td style="text-align:left"><code>DELETE FROM Produtos WHERE id = 1;</code></td>
+</tr>
+</tbody>
+</table>
+<h3>3. DQL (Data Query Language) - Consulta de Dados</h3>
+<p>Comandos para recuperar dados do banco de dados.</p>
+<table>
+<thead>
+<tr>
+  <th style="text-align:left">Comando</th>
+  <th style="text-align:left">Descrição</th>
+  <th style="text-align:left">Exemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td style="text-align:left"><code>SELECT</code></td>
+  <td style="text-align:left">Recupera dados de uma ou mais tabelas.</td>
+  <td style="text-align:left"><code>SELECT nome, preco FROM Produtos;</code></td>
+</tr>
+<tr>
+  <td style="text-align:left"><code>WHERE</code></td>
+  <td style="text-align:left">Filtra registros com base em uma condição.</td>
+  <td style="text-align:left"><code>SELECT * FROM Produtos WHERE preco &gt; 100;</code></td>
+</tr>
+<tr>
+  <td style="text-align:left"><code>ORDER BY</code></td>
+  <td style="text-align:left">Ordena o resultado da consulta.</td>
+  <td style="text-align:left"><code>SELECT * FROM Produtos ORDER BY nome ASC;</code></td>
+</tr>
+<tr>
+  <td style="text-align:left"><code>GROUP BY</code></td>
+  <td style="text-align:left">Agrupa linhas que têm os mesmos valores em colunas especificadas.</td>
+  <td style="text-align:left"><code>SELECT categoria, COUNT(*) FROM Produtos GROUP BY categoria;</code></td>
+</tr>
+<tr>
+  <td style="text-align:left"><code>HAVING</code></td>
+  <td style="text-align:left">Filtra grupos criados pelo <code>GROUP BY</code>.</td>
+  <td style="text-align:left"><code>SELECT categoria, COUNT(*) FROM Produtos GROUP BY categoria HAVING COUNT(*) &gt; 5;</code></td>
+</tr>
+<tr>
+  <td style="text-align:left"><code>JOIN</code></td>
+  <td style="text-align:left">Combina linhas de duas ou mais tabelas com base em uma coluna relacionada.</td>
+  <td style="text-align:left"><code>SELECT p.nome, c.nome_cliente FROM Pedidos p JOIN Clientes c ON p.id_cliente = c.id_cliente;</code></td>
+</tr>
+<tr>
+  <td style="text-align:left"><code>INNER JOIN</code></td>
+  <td style="text-align:left">Retorna registros quando há correspondência em ambas as tabelas.</td>
+  <td style="text-align:left"><code>SELECT * FROM TabelaA INNER JOIN TabelaB ON TabelaA.id = TabelaB.id;</code></td>
+</tr>
+<tr>
+  <td style="text-align:left"><code>LEFT JOIN</code> (ou <code>LEFT OUTER JOIN</code>)</td>
+  <td style="text-align:left">Retorna todos os registros da tabela esquerda e os registros correspondentes da tabela direita.</td>
+  <td style="text-align:left"><code>SELECT * FROM TabelaA LEFT JOIN TabelaB ON TabelaA.id = TabelaB.id;</code></td>
+</tr>
+<tr>
+  <td style="text-align:left"><code>RIGHT JOIN</code> (ou <code>RIGHT OUTER JOIN</code>)</td>
+  <td style="text-align:left">Retorna todos os registros da tabela direita e os registros correspondentes da tabela esquerda.</td>
+  <td style="text-align:left"><code>SELECT * FROM TabelaA RIGHT JOIN TabelaB ON TabelaA.id = TabelaB.id;</code></td>
+</tr>
+<tr>
+  <td style="text-align:left"><code>FULL JOIN</code> (ou <code>FULL OUTER JOIN</code>)</td>
+  <td style="text-align:left">Retorna todos os registros quando há uma correspondência em uma das tabelas.</td>
+  <td style="text-align:left"><code>SELECT * FROM TabelaA FULL JOIN TabelaB ON TabelaA.id = TabelaB.id;</code></td>
+</tr>
+<tr>
+  <td style="text-align:left"><code>UNION</code></td>
+  <td style="text-align:left">Combina o resultado de duas ou mais instruções <code>SELECT</code> (remove duplicatas).</td>
+  <td style="text-align:left"><code>SELECT nome FROM Clientes UNION SELECT nome FROM Fornecedores;</code></td>
+</tr>
+<tr>
+  <td style="text-align:left"><code>UNION ALL</code></td>
+  <td style="text-align:left">Combina o resultado de duas ou mais instruções <code>SELECT</code> (inclui duplicatas).</td>
+  <td style="text-align:left"><code>SELECT nome FROM Clientes UNION ALL SELECT nome FROM Fornecedores;</code></td>
+</tr>
+<tr>
+  <td style="text-align:left"><code>EXISTS</code></td>
+  <td style="text-align:left">Testa a existência de linhas em uma subconsulta.</td>
+  <td style="text-align:left"><code>SELECT nome FROM Clientes WHERE EXISTS (SELECT 1 FROM Pedidos WHERE Pedidos.id_cliente = Clientes.id);</code></td>
+</tr>
+<tr>
+  <td style="text-align:left"><code>IN</code></td>
+  <td style="text-align:left">Verifica se um valor corresponde a qualquer valor em uma lista ou subconsulta.</td>
+  <td style="text-align:left"><code>SELECT nome FROM Produtos WHERE categoria IN ('Eletrônicos', 'Informática');</code></td>
+</tr>
+<tr>
+  <td style="text-align:left"><code>LIKE</code></td>
+  <td style="text-align:left">Busca por um padrão em uma coluna.</td>
+  <td style="text-align:left"><code>SELECT nome FROM Produtos WHERE nome LIKE 'P%';</code></td>
+</tr>
+<tr>
+  <td style="text-align:left"><code>BETWEEN</code></td>
+  <td style="text-align:left">Seleciona valores dentro de um determinado intervalo.</td>
+  <td style="text-align:left"><code>SELECT * FROM Pedidos WHERE data BETWEEN '2024-01-01' AND '2024-01-31';</code></td>
+</tr>
+<tr>
+  <td style="text-align:left"><code>AS</code></td>
+  <td style="text-align:left">Renomeia uma coluna ou tabela.</td>
+  <td style="text-align:left"><code>SELECT nome AS NomeProduto FROM Produtos;</code></td>
+</tr>
+<tr>
+  <td style="text-align:left"><code>COUNT()</code></td>
+  <td style="text-align:left">Retorna o número de linhas que correspondem a um critério especificado.</td>
+  <td style="text-align:left"><code>SELECT COUNT(*) FROM Produtos;</code></td>
+</tr>
+<tr>
+  <td style="text-align:left"><code>SUM()</code></td>
+  <td style="text-align:left">Retorna a soma total de uma coluna numérica.</td>
+  <td style="text-align:left"><code>SELECT SUM(preco) FROM Produtos;</code></td>
+</tr>
+<tr>
+  <td style="text-align:left"><code>AVG()</code></td>
+  <td style="text-align:left">Retorna o valor médio de uma coluna numérica.</td>
+  <td style="text-align:left"><code>SELECT AVG(preco) FROM Produtos;</code></td>
+</tr>
+<tr>
+  <td style="text-align:left"><code>MIN()</code></td>
+  <td style="text-align:left">Retorna o menor valor de uma coluna.</td>
+  <td style="text-align:left"><code>SELECT MIN(preco) FROM Produtos;</code></td>
+</tr>
+<tr>
+  <td style="text-align:left"><code>MAX()</code></td>
+  <td style="text-align:left">Retorna o maior valor de uma coluna.</td>
+  <td style="text-align:left"><code>SELECT MAX(preco) FROM Produtos;</code></td>
+</tr>
+</tbody>
+</table>
+<h3>4. DCL (Data Control Language) - Controle de Dados</h3>
+<p>Comandos para gerenciar permissões e controle de acesso ao banco de dados.</p>
+<table>
+<thead>
+<tr>
+  <th style="text-align:left">Comando</th>
+  <th style="text-align:left">Descrição</th>
+  <th style="text-align:left">Exemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td style="text-align:left"><code>GRANT</code></td>
+  <td style="text-align:left">Concede permissões a usuários ou funções.</td>
+  <td style="text-align:left"><code>GRANT SELECT, INSERT ON Produtos TO usuario_vendas;</code></td>
+</tr>
+<tr>
+  <td style="text-align:left"><code>REVOKE</code></td>
+  <td style="text-align:left">Remove permissões de usuários ou funções.</td>
+  <td style="text-align:left"><code>REVOKE INSERT ON Produtos FROM usuario_vendas;</code></td>
+</tr>
+</tbody>
+</table>
+<h3>5. DTL (Data Transaction Language) - Transação de Dados</h3>
+<p>Comandos para gerenciar transações no banco de dados.</p>
+<table>
+<thead>
+<tr>
+  <th style="text-align:left">Comando</th>
+  <th style="text-align:left">Descrição</th>
+  <th style="text-align:left">Exemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td style="text-align:left"><code>BEGIN TRANSACTION</code> (ou <code>START TRANSACTION</code>)</td>
+  <td style="text-align:left">Inicia uma transação.</td>
+  <td style="text-align:left"><code>BEGIN TRANSACTION;</code></td>
+</tr>
+<tr>
+  <td style="text-align:left"><code>COMMIT</code></td>
+  <td style="text-align:left">Salva todas as alterações feitas na transação.</td>
+  <td style="text-align:left"><code>COMMIT;</code></td>
+</tr>
+<tr>
+  <td style="text-align:left"><code>ROLLBACK</code></td>
+  <td style="text-align:left">Desfaz todas as alterações feitas na transação.</td>
+  <td style="text-align:left"><code>ROLLBACK;</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p>Espero que este <code>README.md</code> seja um recurso valioso para você e para quem visitar seu repositório!</p>
+
+  </main>
+</body>
+</html>
